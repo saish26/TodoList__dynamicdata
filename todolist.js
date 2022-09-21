@@ -2,40 +2,37 @@ const task= [];
 const addbtn = document.getElementById('addbtn');
 const removebtn = document.getElementById('removebtn');
 var display=document.querySelector('.display');
+var consoleDislplay=document.querySelector('.display-console');
+var userInput;
 addbtn.addEventListener("click",(e)=>{
-    const userInput=document.getElementById('input');
+    userInput=document.getElementById('input');
     var input =userInput.value;
     task.push(input);
-    display.innerHTML+=`
-    <div class='todo-list'>
-        <li class='todo-list__input'>
-        ${input}
-        </li>
-        <div class='todo-list__btn'>
-            <button class='todo-list__btn--edit' >
-                Edit
-            </button>
-            <button class='todo-list__btn--delete'>
-                Delete
-            </button>
-        </div>
-    </div>
-     ` ;
-     userInput.value='';
+    display.innerHTML='';
+    displayTodoList();
 });
 
-const editBtn=document.querySelector('.todo-list__btn--edit');
-editBtn.addEventListener('click',e=>{
-    console.log('clicked');
-});
-
-
+consoleDislplay.addEventListener('click',e=>{
+    console.log('Final Todo list',task);
+})
 
 const displayTodoList=()=>{
-
-    
+    task.forEach(val=>{
+        display.innerHTML+=`
+        <div class='todo-list'>
+            <input class='todo-list__input' value=' ${val}' disabled/>
+            <div class='todo-list__btn'>
+                <button class='todo-list__btn--edit' >
+                    Edit
+                </button>
+                <button class='todo-list__btn--delete'>
+                    Delete
+                </button>
+            </div>
+        </div>
+         ` ;
+         userInput.value='';
+    });
 }
-       
         
    
-
