@@ -1,0 +1,22 @@
+.container{
+      width:100%;
+      display:flex;
+      justify-content: center;
+}
+
+.input{
+    padding-bottom:10px;
+}
+
+li{
+    padding:2px 0px;
+}
+
+.todo-list{
+    display:flex;
+    padding:4px 0px;
+}
+
+.todo-list__btn{
+    padding:0px 10px;
+}
