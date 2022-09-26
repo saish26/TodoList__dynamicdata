@@ -4,6 +4,8 @@ const removebtn = document.getElementById('removebtn');
 var display=document.querySelector('.display');
 var consoleDislplay=document.querySelector('.display-console');
 var userInput;
+var todolists;
+
 addbtn.addEventListener("click",(e)=>{
     userInput=document.getElementById('input');
     var input =userInput.value;
@@ -32,6 +34,25 @@ const displayTodoList=()=>{
         </div>
          ` ;
          userInput.value='';
+    });
+    getTodoList();
+}
+
+const getTodoList=()=>{
+    todolists=document.querySelectorAll('.todo-list');
+    console.log('todol list all here',todolists);
+    todolists.forEach((list,key)=>{
+        console.log('lists here',);
+        let editBtn=list.children[1].children[0];
+        let delteBtn=list.children[1].children[1];
+
+        editBtn.addEventListener('click',e=>{
+            console.log('edit ');
+        });
+        
+        delteBtn.addEventListener('click',e=>{
+            console.log('delete');
+        });
     });
 }
         
