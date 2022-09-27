@@ -1,6 +1,6 @@
 const task= [];
 const addbtn = document.getElementById('addbtn');
-const removebtn = document.getElementById('removebtn');
+const removeall = document.getElementById('removebtn');
 var display=document.querySelector('.display');
 var consoleDislplay=document.querySelector('.display-console');
 var userInput;
@@ -30,6 +30,10 @@ const displayTodoList=()=>{
                 <button class='todo-list__btn--delete'>
                     Delete
                 </button>
+                <button class='todo-list__btn--save' hidden>
+                    Save
+                </button>
+                
             </div>
         </div>
          ` ;
@@ -42,18 +46,50 @@ const getTodoList=()=>{
     todolists=document.querySelectorAll('.todo-list');
     console.log('todol list all here',todolists);
     todolists.forEach((list,key)=>{
-        console.log('lists here',);
+        console.log('lists here',key);
         let editBtn=list.children[1].children[0];
         let delteBtn=list.children[1].children[1];
+        let savebtn=list.children[1].children[2];
 
         editBtn.addEventListener('click',e=>{
-            console.log('edit ');
+            savebtn.hidden= false;
+            editinput= list.children[0];
+            editinput.disabled= false;
+            
+            
+
         });
-        
+
         delteBtn.addEventListener('click',e=>{
-            console.log('delete');
+            task.splice(key,1);
+            console.log(task);
+            display.innerHTML="";
+            displayTodoList();
+            
         });
+        savebtn.addEventListener('click',(e)=>{
+            editinput.disabled= true;
+            task.splice(key,1,editinput.value);
+            savebtn.hidden= true;
+
+        })
     });
 }
+removeall.addEventListener('click',(e)=>{
+    task.length=0;
+    display.innerHTML="";
+})
+            
+            
+        
+
+
+
+
+            
+            
+            
+            
+        
         
    
